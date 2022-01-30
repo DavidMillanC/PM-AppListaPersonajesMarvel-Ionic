@@ -1,0 +1,23 @@
+<section>
+  <ion-card *ngIf="proceso != 'Edicion'; else otherProcess">
+    <ion-input placeholder="Ingrese un poder..." type="text" #poder>{{
+      proceso
+    }}</ion-input>
+
+    <ion-button color="primary" (click)="insertarPoder(poder)"
+      >Guardar</ion-button
+    >
+  </ion-card>
+
+  <ng-template #otherProcess>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Nombre:</ion-label>
+        <ion-input clearInput value="{{ power }}" #poder></ion-input>
+        <ion-button color="primary" (click)="editarPower(poder)"
+          >Guardar</ion-button
+        >
+      </ion-item>
+    </ion-card>
+  </ng-template>
+</section>

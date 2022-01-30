@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edición - {{Heroe.nombre}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="cerrar()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Nombre:</ion-label>
+        <ion-input clearInput value="{{Heroe.nombre}}" #nombre></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">URL-Imagen del Heroe</ion-label>
+        <ion-input clearInput value="{{Heroe.foto}}" #foto></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Alias</ion-label>
+        <ion-input clearInput value="{{Heroe.alias}}" #alias></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Fecha de Nacimiento</ion-label>
+        <ion-input
+          clearInput
+          value="{{Heroe.fechaNacimiento | date:'yyyy-MM-dd'}}"
+          #fecha
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Nacionalidad</ion-label>
+        <ion-input
+          clearInput
+          value="{{Heroe.nacionalidad}}"
+          #nacionalidad
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Residencia</ion-label>
+        <ion-input
+          clearInput
+          value="{{Heroe.residencia}}"
+          #residencia
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Nivel</ion-label>
+        <ion-card>
+          <ion-list>
+            <ion-radio-group
+              (ionChange)="nivelSeleccion($event)"
+              value="{{Heroe.nivel}}"
+            >
+              <ion-item>
+                <ion-icon name="star"></ion-icon>
+                <ion-radio slot="start" value="1"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon>
+                <ion-radio slot="start" value="2"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-radio slot="start" value="3"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon>
+                <ion-radio slot="start" value="4"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon
+                ><ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-radio slot="start" value="5"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-card>
+      </ion-item>
+    </ion-card>
+
+    <ion-button
+      (click)="editarHeroe(foto, nombre, alias, fecha, nacionalidad, residencia)"
+      color="primary"
+      >Guardar</ion-button
+    >
+  </section>
+</ion-content>

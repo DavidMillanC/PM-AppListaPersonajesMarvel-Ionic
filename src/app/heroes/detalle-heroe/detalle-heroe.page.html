@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{Heroe.nombre}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" slot="end">
+      <ion-button (click)="presentModalEdit()">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" slot="end">
+      <ion-button (click)="eliminarHeroe()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card><ion-img [src]="Heroe.foto"></ion-img></ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h1 class="ion-text-center">{{Heroe.nombre}}</h1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card-header>
+        <ion-card-title> Alias </ion-card-title>
+      </ion-card-header>
+      <ion-card
+        ><ion-list>
+          <ion-item>
+            <ion-label>{{Heroe.alias}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-card-header>
+        <ion-card-title> Fecha de Nacimiento </ion-card-title>
+      </ion-card-header>
+      <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{Heroe.fechaNacimiento | date:'yyyy-MM-dd'}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-card-header>
+        <ion-card-title> Nacionalidad </ion-card-title>
+      </ion-card-header>
+      <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{Heroe.nacionalidad}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-card-header>
+        <ion-card-title> Residencia </ion-card-title>
+      </ion-card-header>
+      <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{Heroe.residencia}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-card-header>
+        <ion-card-title> Nivel </ion-card-title>
+      </ion-card-header>
+      <ion-card>
+        <ion-list>
+          <ion-radio-group value="{{Heroe.nivel}}">
+            <ion-item>
+              <ion-icon name="star"></ion-icon>
+              <ion-radio disabled slot="start" value="1"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-radio disabled slot="start" value="2"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-radio disabled slot="start" value="3"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
+              ><ion-icon name="star"></ion-icon
+              ><ion-icon name="star"></ion-icon>
+              <ion-radio disabled slot="start" value="4"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon
+              ><ion-icon name="star"></ion-icon
+              ><ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-radio disabled slot="start" value="5"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card-header
+        ><ion-card-title>Poderes</ion-card-title></ion-card-header
+      >
+      <ion-list *ngIf="Heroe.poderes.length >0 ; else NoPoderes">
+        <ion-item *ngFor="let com of Heroe.poderes">
+          <ion-label #com> {{com}} </ion-label>
+          <ion-item style="padding-right: 0%">
+            <ion-button color="success" (click)="presentModalPowers(com)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="eliminarPowerHeroe(com)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-item>
+      </ion-list>
+      <ng-template #NoPoderes>
+        <ion-text>
+          <p class="ion-text-center">Conoces sus poderes? Ingresalos!!...</p>
+        </ion-text>
+      </ng-template>
+    </ion-col>
+  </ion-row>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="presentModal()" type="button">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
